@@ -67,7 +67,7 @@ loader(scripts, function() {
 });
 ```
 
-### meta(scope?)
+### meta(regex?)
 
 Find all the `<meta>` tags that have a name attribute and collate as a
 simple JS objects whether the content of the tag is the value.
@@ -80,14 +80,27 @@ given the following html:
 <head>
 <meta name="foo" content="bar">
 <meta name="app" content="wonderful">
+<meta name="dd-name" content="fred">
+<meta name="dd-title" content="sir">
 </head>
 <body>
 </body>
 </html>
 */
 
-console.log(require('dd/meta')());
-// --> { foo: 'bar', app: 'wonderful' }
+var meta = require('dd/meta');
+
+// get all the attributes
+console.log(meta());
+// --> { foo: 'bar', app: 'wonderful', 'dd-name': 'fred', 'dd-title': 'sir' }
+
+// get only attributes matching a regex
+console.log(meta(/^foo/));
+// --> { foo: 'bar' }
+
+// get capture group 1 matched
+console.log(meta(/^dd-(.*)$/));
+// --> { name: 'fred', title: 'sir' }
 ```
 
 ### qsa(selector, scope?)

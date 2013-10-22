@@ -4,7 +4,7 @@
 var qsa = require('./qsa');
 
 /**
-  ### meta(scope?)
+  ### meta(regex?)
 
   Find all the `<meta>` tags that have a name attribute and collate as a
   simple JS objects whether the content of the tag is the value.
@@ -12,12 +12,17 @@ var qsa = require('./qsa');
   <<< examples/meta.js
 
 **/
-module.exports = function(scope) {
+module.exports = function(regex) {
   var data = {};
 
   // find all the meta tags with a name and extract the content
-  qsa('meta[name]', scope).forEach(function(tag) {
-    data[tag.getAttribute('name')] = tag.getAttribute('content') || '';
+  qsa('meta[name]').forEach(function(tag) {
+    var name = tag.getAttribute('name');
+    var match = regex ? regex.exec(name) : [name, name];
+
+    if (match) {
+      data[match[1] || match[0]] = tag.getAttribute('content') || '';
+    }
   });
 
   return data;
