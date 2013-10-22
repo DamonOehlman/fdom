@@ -36,7 +36,7 @@ module.exports = function(name, el) {
     // if we are ending the stream, then remove the listener
     if (end) {
       el.removeEventListener(name, handleEvent);
-      return cb(end);
+      return cb ? cb(end) : null;
     }
 
     if (buffer.length > 0) {
@@ -44,6 +44,6 @@ module.exports = function(name, el) {
     }
 
     // otherwise, save the cb
-    queued = [ cb ];
+    queued[queued.length] = cb;
   };
 };

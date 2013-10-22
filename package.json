@@ -25,7 +25,8 @@
   "devDependencies": {
     "crel": "~1.1.0",
     "tape": "~2.0.0",
-    "async": "~0.2.9"
+    "async": "~0.2.9",
+    "pull-stream": "~2.20.1"
   },
   "testling": {
     "files": "test/all.js",
