@@ -1,0 +1,25 @@
+{
+  "name": "dd",
+  "version": "0.0.0",
+  "description": "Reusable DOM utils",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/all.js",
+    "gendocs": "gendocs > README.md"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DamonOehlman/dd.git"
+  },
+  "keywords": [
+    "dom",
+    "manipulation",
+    "extraction",
+    "qsa"
+  ],
+  "author": "Damon Oehlman <damon.oehlman@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DamonOehlman/dd/issues"
+  }
+}
