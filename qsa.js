@@ -7,10 +7,6 @@ var idSelectorRE = /^#([\w\-]+)$/;
 var tagSelectorRE = /^[\w\-]+$/;
 
 /**
-  ## dd/qsa
-
-  <<< examples/qsa.js
-
   ### qsa(selector, scope?)
 
   This function is used to get the results of the querySelectorAll output
@@ -18,6 +14,9 @@ var tagSelectorRE = /^[\w\-]+$/;
   implementation in
   [zepto](https://github.com/madrobby/zepto/blob/master/src/zepto.js#L104),
   but perhaps not quite as terse.
+
+  <<< examples/qsa.js
+
 **/
 module.exports = function(selector, scope) {
   var idSearch;
