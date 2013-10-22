@@ -18,7 +18,9 @@ how to `require` and use them in your code.
 
 ### get-attributes
 
-`(regex, => el) => {}`
+```
+f(regex, => el) => { attr1: val, attr2: val }
+```
 
 This is a simple but useful attribute extractor that can be used to pull
 attributes that match a particular pattern from an element. The primary
