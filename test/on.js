@@ -51,3 +51,14 @@ test('can use async to wait load for multiple elements', function(t) {
     document.body.appendChild(el);
   });
 });
+
+test('can fully apply on in a single call', function(t) {
+  var el = crel('script', { src: '//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/hammer.min.js' });
+
+  t.plan(1);
+  on('load', el, function() {
+    t.pass('loaded script');
+  });
+
+  document.body.appendChild(el);
+});

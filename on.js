@@ -21,25 +21,29 @@
 
   <<< examples/on.js
 **/
-module.exports = function(name, el) {
-  function bind(t) {
-    var trigger;
+module.exports = function(name, el, callback) {
+  function bind(t, trigger) {
     var buffered = [];
 
-    t.addEventListener(name, function(evt) {
-      if (trigger) {
-        trigger(null, evt);
+    function handleEvent(evt) {
+      if (typeof trigger == 'function') {
+        return trigger(null, evt);
       }
-      else {
-        buffered[buffered.length] = evt;
-      }
-    });
 
-    return function(cb) {
+      // otherwise, buffer the event
+      buffered[buffered.length] = evt;
+    }
+
+    // listen for events
+    t.addEventListener(name, handleEvent);
+
+    // if we have been provided a trigger function (not an array index)
+    // then return the handle event call
+    return typeof trigger == 'function' ? handleEvent : function(cb) {
       trigger = cb;
 
       // if we have a buffered results, trigger those now
-      if (buffered.length) {
+      if (buffered.length > 0) {
         buffered.splice(0).forEach(function(evt) {
           cb(null, evt);
         });
@@ -47,5 +51,5 @@ module.exports = function(name, el) {
     };
   }
 
-  return el ? bind(el) : bind;
+  return el ? bind(el, callback) : bind;
 };
