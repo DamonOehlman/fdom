@@ -23,3 +23,12 @@ test('extract the rtc-attributes from the test element', function(t) {
   t.plan(1);
   t.deepEqual(getAttributes(reRtc, el), refData);
 });
+
+test('partially apply get-attributes', function(t) {
+  var extractor;
+
+  t.plan(2);
+  extractor = getAttributes(reRtc);
+  t.equal(typeof extractor, 'function', 'partially applied');
+  t.deepEqual(extractor(el), refData);
+});
