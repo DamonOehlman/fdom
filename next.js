@@ -17,16 +17,15 @@
 **/
 module.exports = function(name, el) {
   var buffer = [];
-  var next = [];
+  var queued = [];
 
   function handleEvent(evt) {
-    next.length ? next.shift()(null, evt) : buffer[buffer.length] = evt;
+    queued.length ? queued.shift()(null, evt) : buffer[buffer.length] = evt;
   }
 
   // add the event listener to the object
   el.addEventListener(name, handleEvent);
 
-  // return the function for getting the event
   return function(end, cb) {
     // handle the non pull-stream case of a single argument
     if (typeof end == 'function') {
@@ -45,6 +44,6 @@ module.exports = function(name, el) {
     }
 
     // otherwise, save the cb
-    next = [ cb ];
+    queued = [ cb ];
   };
 };
