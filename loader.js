@@ -9,7 +9,7 @@
   and trigger the callback once all those scripts have been loaded (or
   loading has failed in one instance).
 
-  <<< examples/dd.js
+  <<< examples/loader.js
 
 **/
 
