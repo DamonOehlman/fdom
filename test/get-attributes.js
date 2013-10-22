@@ -32,3 +32,35 @@ test('partially apply get-attributes', function(t) {
   t.equal(typeof extractor, 'function', 'partially applied');
   t.deepEqual(extractor(el), refData);
 });
+
+test('create a test element with alternative attribute (rtc:) names', function(t) {
+  t.plan(2);
+  el = crel('video', {
+    'rtc:peer': 'customer',
+    'rtc:stream': 'main'
+  });
+
+  t.ok(el instanceof HTMLVideoElement);
+  t.equal(el.getAttribute('rtc:peer'), 'customer');
+});
+
+test('extract the rtc-attributes from the test element', function(t) {
+  t.plan(1);
+  t.deepEqual(getAttributes(reRtc, el), refData);
+});
+
+test('create a test element with alternative attribute (data-rtc-) names', function(t) {
+  t.plan(2);
+  el = crel('video', {
+    'data-rtc-peer': 'customer',
+    'data-rtc-stream': 'main'
+  });
+
+  t.ok(el instanceof HTMLVideoElement);
+  t.equal(el.getAttribute('data-rtc-peer'), 'customer');
+});
+
+test('extract the rtc-attributes from the test element', function(t) {
+  t.plan(1);
+  t.deepEqual(getAttributes(reRtc, el), refData);
+});
