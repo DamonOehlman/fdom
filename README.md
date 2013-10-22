@@ -11,6 +11,9 @@ than by simply requiring `dd` as a whole module.
 [![NPM](https://nodei.co/npm/dd.png)](https://nodei.co/npm/dd/)
 
 
+[![browser support](https://ci.testling.com/DamonOehlman/dd.png)](https://ci.testling.com/DamonOehlman/dd)
+
+
 ## Modules
 
 The following is a list of modules that `dd` provides. Examples demonstrate
