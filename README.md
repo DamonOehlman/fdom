@@ -103,6 +103,27 @@ console.log(meta(/^dd-(.*)$/));
 // --> { name: 'fred', title: 'sir' }
 ```
 
+### next
+
+```
+f(name, el) => fn
+```
+
+The `next` function is used to pull event data from `el` for the event
+named `name`.  This can be useful when combined with a
+[pull-stream](https://github.com/dominictarr/pull-stream) to capture
+a stream of events from a DOM elements.
+
+```js
+var pull = require('pull-stream');
+var next = require('dd/next');
+
+pull(
+  pull.Source(next('keydown', document)),
+  pull.log()
+);
+```
+
 ### on
 
 ```
