@@ -1,6 +1,6 @@
 {
   "name": "dd",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Reusable DOM utils",
   "main": "index.js",
   "scripts": {
