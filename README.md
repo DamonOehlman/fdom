@@ -16,6 +16,34 @@ than by simply requiring `dd` as a whole module.
 The following is a list of modules that `dd` provides. Examples demonstrate
 how to `require` and use them in your code.
 
+### get-attributes
+
+`(regex, => el) => {}`
+
+This is a simple but useful attribute extractor that can be used to pull
+attributes that match a particular pattern from an element. The primary
+use case is around custom attributes (such as those used in
+[AngularJS](http://angularjs.org/)) but could also be used to extract
+your own `dataset` attribute collection from an element.
+
+```js
+/*
+imagine we have the following html:
+
+<html>
+<body>
+<video id="test" rtc-remote="customer" rtc-stream="main"></video>
+</body>
+</html>
+*/
+
+var getAttributes = require('../get-attributes');
+var el = document.getElementById('test');
+
+console.log(getAttributes(/^(?:rtc-|data-rtc-|rtc\:)(.*)$/, el));
+// --> { remote: 'customer', stream: 'main' }
+```
+
 ### loader(urls, opts?, callback)
 
 This is a simple script loader that will load the urls specified
