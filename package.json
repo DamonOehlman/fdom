@@ -31,7 +31,7 @@
   "testling": {
     "files": "test/all.js",
     "browsers": [
-      "ie/8..latest",
+      "ie/9..latest",
       "firefox/16..latest",
       "firefox/nightly",
       "chrome/22..latest",
