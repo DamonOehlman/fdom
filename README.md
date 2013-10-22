@@ -67,6 +67,29 @@ loader(scripts, function() {
 });
 ```
 
+### meta(scope?)
+
+Find all the `<meta>` tags that have a name attribute and collate as a
+simple JS objects whether the content of the tag is the value.
+
+```js
+/*
+given the following html:
+
+<html>
+<head>
+<meta name="foo" content="bar">
+<meta name="app" content="wonderful">
+</head>
+<body>
+</body>
+</html>
+*/
+
+console.log(require('dd/meta')());
+// --> { foo: 'bar', app: 'wonderful' }
+```
+
 ### qsa(selector, scope?)
 
 This function is used to get the results of the querySelectorAll output
