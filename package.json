@@ -21,5 +21,12 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/DamonOehlman/dd/issues"
+  },
+  "devDependencies": {
+    "crel": "~1.1.0",
+    "tape": "~2.0.0"
+  },
+  "testling": {
+    "files": "test/all.js"
   }
 }

@@ -1,0 +1,25 @@
+var test = require('tape');
+var getAttributes = require('../get-attributes');
+var crel = require('crel');
+var reRtc = /^(?:rtc-|data-rtc-|rtc:)(.*)$/;
+var refData = {
+  peer: 'customer',
+  stream: 'main'
+};
+var el;
+
+test('create our test element', function(t) {
+  t.plan(2);
+  el = crel('video', {
+    'rtc-peer': 'customer',
+    'rtc-stream': 'main'
+  });
+
+  t.ok(el instanceof HTMLVideoElement);
+  t.equal(el.getAttribute('rtc-peer'), 'customer');
+});
+
+test('extract the rtc-attributes from the test element', function(t) {
+  t.plan(1);
+  t.deepEqual(getAttributes(reRtc, el), refData);
+});

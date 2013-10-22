@@ -4,7 +4,9 @@
 /**
   ### get-attributes
 
-  `(regex, => el) => {}`
+  ```
+  f(regex, => el) => { attr1: val, attr2: val }
+  ```
 
   This is a simple but useful attribute extractor that can be used to pull
   attributes that match a particular pattern from an element. The primary
@@ -16,4 +18,22 @@
 **/
 module.exports = function(regex, el) {
 
+  function extract(target) {
+    var match;
+    var data = {};
+    var attr;
+
+    // iterate through the attributes
+    for (var ii = 0, count = target.attributes.length; ii < count; ii++) {
+      attr = target.attributes[ii];
+      match = regex.exec(attr.name);
+      if (match) {
+        data[match[1] || match[0]] = attr.value;
+      }
+    }
+
+    return data;
+  }
+
+  return el ? extract(el) : extract;
 };
