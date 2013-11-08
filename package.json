@@ -1,6 +1,6 @@
 {
   "name": "dd",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "JS DOM Utils, browserify and selective require friendly",
   "main": "index.js",
   "scripts": {
