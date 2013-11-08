@@ -7,7 +7,15 @@
   ```js
   var append = require('dd/append');
   ```
+**/
 
+var append = module.exports = function() {
+  console.log('not yet implemented');
+
+  return false;
+};
+
+/**
   #### append.to(target, => child) => child
 
   Append the specified `child` element to the `target` element using the
@@ -17,7 +25,7 @@
 
 **/
 
-exports.to = function(target, child) {
+append.to = function(target, child) {
 
   function append(el) {
     target.appendChild(el);
