@@ -8,10 +8,10 @@ As per `cog` it is designed to be used as in a cherry-picking way rather
 than by simply requiring `dd` as a whole module.
 
 
-[![NPM](https://nodei.co/npm/dd.png)](https://nodei.co/npm/dd/)
+[![NPM](https://nodei.co/npm/fdom.png)](https://nodei.co/npm/fdom/)
 
 
-[![browser support](https://ci.testling.com/DamonOehlman/dd.png)](https://ci.testling.com/DamonOehlman/dd)
+[![browser support](https://ci.testling.com/DamonOehlman/fdom.png)](https://ci.testling.com/DamonOehlman/fdom)
 
 
 ## Modules
@@ -31,7 +31,7 @@ Append the specified `child` element to the `target` element using the
 familiar `appendChild` method of the target.
 
 ```js
-var append = require('dd/append');
+var append = require('fdom/append');
 var crel = require('crel');
 
 // create a list container, appending it to the document body
@@ -53,8 +53,8 @@ A functional helper for making
 modifications to elements, supporting partial application.
 
 ```js
-var tweak = require('dd/classtweak');
-var qsa = require('dd/qsa');
+var tweak = require('fdom/classtweak');
+var qsa = require('fdom/qsa');
 
 // add a class to the document body
 tweak('+test', document.body);
@@ -106,7 +106,7 @@ and trigger the callback once all those scripts have been loaded (or
 loading has failed in one instance).
 
 ```js
-var loader = require('dd/loader');
+var loader = require('fdom/loader');
 var scripts = [
   '//cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js',
   '//cdnjs.cloudflare.com/ajax/libs/chainvas/2.1/chainvas.js'
@@ -138,7 +138,7 @@ given the following html:
 </html>
 */
 
-var meta = require('dd/meta');
+var meta = require('fdom/meta');
 
 // get all the attributes
 console.log(meta());
@@ -166,7 +166,7 @@ a stream of events from a DOM elements.
 
 ```js
 var pull = require('pull-stream');
-var next = require('dd/next');
+var next = require('fdom/next');
 
 pull(
   pull.Source(next('keydown', document)),
@@ -194,7 +194,7 @@ a null value to the `err` argument.
 ```js
 var async = require('async');
 var crel = require('crel');
-var waitLoad = require('dd/on')('load');
+var waitLoad = require('fdom/on')('load');
 var scripts = [
   '//cdnjs.cloudflare.com/ajax/libs/ace/1.1.01/ace.js',
   '//cdnjs.cloudflare.com/ajax/libs/chainvas/2.1/chainvas.js'
@@ -222,7 +222,7 @@ implementation in
 but perhaps not quite as terse.
 
 ```js
-var qsa = require('dd/qsa');
+var qsa = require('fdom/qsa');
 ```
 
 ### raf(callback)
@@ -230,7 +230,7 @@ var qsa = require('dd/qsa');
 Request animation frame helper.
 
 ```js
-var raf = require('dd/raf');
+var raf = require('fdom/raf');
 
 function animate() {
   console.log('animating');

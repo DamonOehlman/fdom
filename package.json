@@ -1,7 +1,7 @@
 {
-  "name": "dd",
+  "name": "fdom",
   "version": "0.6.0",
-  "description": "JS DOM Utils, browserify and selective require friendly",
+  "description": "Functional thinking inspired DOM helpers (browserify and selective require friendly)",
   "main": "index.js",
   "scripts": {
     "test": "node test/all.js",
@@ -9,18 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DamonOehlman/dd.git"
+    "url": "https://github.com/DamonOehlman/fdom.git"
   },
   "keywords": [
     "dom",
     "manipulation",
     "extraction",
-    "qsa"
+    "qsa",
+    "functional"
   ],
   "author": "Damon Oehlman <damon.oehlman@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/DamonOehlman/dd/issues"
+    "url": "https://github.com/DamonOehlman/fdom/issues"
   },
   "devDependencies": {
     "crel": "~1.1.0",
