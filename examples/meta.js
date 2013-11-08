@@ -5,8 +5,8 @@ given the following html:
 <head>
 <meta name="foo" content="bar">
 <meta name="app" content="wonderful">
-<meta name="dd-name" content="fred">
-<meta name="dd-title" content="sir">
+<meta name="fdom-name" content="fred">
+<meta name="fdom-title" content="sir">
 </head>
 <body>
 </body>
@@ -17,12 +17,12 @@ var meta = require('../meta');
 
 // get all the attributes
 console.log(meta());
-// --> { foo: 'bar', app: 'wonderful', 'dd-name': 'fred', 'dd-title': 'sir' }
+// --> { foo: 'bar', app: 'wonderful', 'fdom-name': 'fred', 'fdom-title': 'sir' }
 
 // get only attributes matching a regex
 console.log(meta(/^foo/));
 // --> { foo: 'bar' }
 
 // get capture group 1 matched
-console.log(meta(/^dd-(.*)$/));
+console.log(meta(/^fdom-(.*)$/));
 // --> { name: 'fred', title: 'sir' }

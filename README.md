@@ -1,11 +1,11 @@
-# dd
+# fdom
 
 A set of DOM utilities, which were first created in
 [cog](https://github.com/DamonOehlman/cog) but have been extracted as cog
-is more a JS language toolset, and `dd` is it's DOM counterpart.
+is more a JS language toolset, and `fdom` is it's DOM counterpart.
 
 As per `cog` it is designed to be used as in a cherry-picking way rather
-than by simply requiring `dd` as a whole module.
+than by simply requiring `fdom` as a whole module.
 
 
 [![NPM](https://nodei.co/npm/fdom.png)](https://nodei.co/npm/fdom/)
@@ -16,13 +16,13 @@ than by simply requiring `dd` as a whole module.
 
 ## Modules
 
-The following is a list of modules that `dd` provides. Examples demonstrate
+The following is a list of modules that `fdom` provides. Examples demonstrate
 how to `require` and use them in your code.
 
 ### append
 
 ```js
-var append = require('dd/append');
+var append = require('fdom/append');
 ```
 
 #### append.to(target, => child) => child
@@ -130,8 +130,8 @@ given the following html:
 <head>
 <meta name="foo" content="bar">
 <meta name="app" content="wonderful">
-<meta name="dd-name" content="fred">
-<meta name="dd-title" content="sir">
+<meta name="fdom-name" content="fred">
+<meta name="fdom-title" content="sir">
 </head>
 <body>
 </body>
@@ -142,14 +142,14 @@ var meta = require('fdom/meta');
 
 // get all the attributes
 console.log(meta());
-// --> { foo: 'bar', app: 'wonderful', 'dd-name': 'fred', 'dd-title': 'sir' }
+// --> { foo: 'bar', app: 'wonderful', 'fdom-name': 'fred', 'fdom-title': 'sir' }
 
 // get only attributes matching a regex
 console.log(meta(/^foo/));
 // --> { foo: 'bar' }
 
 // get capture group 1 matched
-console.log(meta(/^dd-(.*)$/));
+console.log(meta(/^fdom-(.*)$/));
 // --> { name: 'fred', title: 'sir' }
 ```
 

@@ -5,7 +5,7 @@
   ### append
 
   ```js
-  var append = require('dd/append');
+  var append = require('fdom/append');
   ```
 **/
 
