@@ -19,6 +19,33 @@ than by simply requiring `dd` as a whole module.
 The following is a list of modules that `dd` provides. Examples demonstrate
 how to `require` and use them in your code.
 
+### append
+
+```js
+var append = require('dd/append');
+```
+
+#### append.to(target, => child) => child
+
+Append the specified `child` element to the `target` element using the
+familiar `appendChild` method of the target.
+
+```js
+var append = require('dd/append');
+var crel = require('crel');
+
+// create a list container, appending it to the document body
+var list = append.to(document.body, crel('ul'));
+
+// create items in the list for each of the fruits in the list
+['apple', 'banana', 'pear', 'orange']
+  .map(function(fruit) {
+    return crel('li', fruit)
+  })
+  .map(append.to(list));
+
+```
+
 ### classtweak(operations, => el)
 
 A functional helper for making
