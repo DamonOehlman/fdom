@@ -1,6 +1,6 @@
 {
   "name": "fdom",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Functional thinking inspired DOM helpers (browserify and selective require friendly)",
   "main": "index.js",
   "scripts": {
