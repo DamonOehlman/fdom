@@ -2,6 +2,7 @@
 'use strict';
 
 var qsa = require('./qsa');
+var reBool = /^(true|false)$/i
 
 /**
   ### meta(regex?)
@@ -21,9 +22,19 @@ module.exports = function(regex) {
     var match = regex ? regex.exec(name) : [name, name];
 
     if (match) {
-      data[match[1] || match[0]] = tag.getAttribute('content') || '';
+      data[match[1] || match[0]] = coerce(tag.getAttribute('content') || '');
     }
   });
 
   return data;
 };
+
+function coerce(value) {
+  value = parseFloat(value) || value;
+
+  if (reBool.test(value)) {
+    value = value == 'true';
+  }
+
+  return value;
+}

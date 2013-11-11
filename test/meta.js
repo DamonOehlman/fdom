@@ -68,3 +68,77 @@ test('extra a capture group subset', function(t) {
     title: 'sir'
   });
 });
+
+test('create some intish metadata', function(t) {
+  var m = crel('meta', { name: 'intish', content: 5 });
+
+  document.head.appendChild(m);
+
+  t.plan(3);
+  t.ok(m instanceof HTMLMetaElement);
+  t.equal(m.getAttribute('name'), 'intish');
+  t.equal(m.parentNode, document.head);
+});
+
+test('extract as integer value', function(t) {
+  t.plan(1);
+  t.deepEqual(meta(/^intish/), {
+    intish: 5
+  });
+});
+
+test('create some floatish metadata', function(t) {
+  var m = crel('meta', { name: 'floatish', content: 8.3 });
+
+  document.head.appendChild(m);
+
+  t.plan(3);
+  t.ok(m instanceof HTMLMetaElement);
+  t.equal(m.getAttribute('name'), 'floatish');
+  t.equal(m.parentNode, document.head);
+});
+
+test('extract as float value', function(t) {
+  t.plan(1);
+  t.deepEqual(meta(/^floatish/), {
+    floatish: 8.3
+  });
+});
+
+test('create some boolish metadata (falsy)', function(t) {
+  var m = crel('meta', { name: 'falsey', content: false });
+
+  document.head.appendChild(m);
+
+  t.plan(4);
+  t.ok(m instanceof HTMLMetaElement);
+  t.equal(m.getAttribute('name'), 'falsey');
+  t.equal(m.getAttribute('content'), 'false');
+  t.equal(m.parentNode, document.head);
+});
+
+test('extract as boolean value', function(t) {
+  t.plan(1);
+  t.deepEqual(meta(/^falsey/), {
+    falsey: false
+  });
+});
+
+test('create some boolish metadata (truthy)', function(t) {
+  var m = crel('meta', { name: 'truthy', content: true });
+
+  document.head.appendChild(m);
+
+  t.plan(4);
+  t.ok(m instanceof HTMLMetaElement);
+  t.equal(m.getAttribute('name'), 'truthy');
+  t.equal(m.getAttribute('content'), 'true');
+  t.equal(m.parentNode, document.head);
+});
+
+test('extract as boolean value', function(t) {
+  t.plan(1);
+  t.deepEqual(meta(/^truthy/), {
+    truthy: true
+  });
+});
