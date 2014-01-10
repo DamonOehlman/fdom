@@ -4,19 +4,16 @@ var next = require('../next');
 var keydown;
 var el;
 
-function dispatchKeys(codes) {
-  [].concat(codes).forEach(function(code) {
-    var evt = new KeyboardEvent('keydown');
-    evt.keycode = code;
-
-    el.dispatchEvent(evt);
-  });
-}
-
 test('create a test element', function(t) {
   t.plan(1);
   el = crel('div');
   t.ok(el instanceof HTMLDivElement);
+});
+
+test('get a key sender function from simkey', function(t) {
+  t.plan(1);
+  simkey = require('simkey')(el);
+  t.equal(typeof simkey, 'function', 'got a simkey sender');
 });
 
 test('create a next keydown requester', function(t) {
@@ -26,55 +23,58 @@ test('create a next keydown requester', function(t) {
 });
 
 test('can listen for a keydown', function(t) {
+  t.plan(1);
   keydown(function(err, evt) {
-    t.equal(evt.keycode, 39);
+    t.equal(evt.keyCode, 39);
   });
 
-  t.plan(1);
-  dispatchKeys([39]);
+  simkey(39);
 });
 
 test('can listen for multiple keys', function(t) {
   keydown(function(err, evt) {
-    t.equal(evt.keycode, 39);
+    t.equal(evt.keyCode, 39);
   });
 
   keydown(function(err, evt) {
-    t.equal(evt.keycode, 40);
+    t.equal(evt.keyCode, 40);
   });
 
   keydown(function(err, evt) {
-    t.equal(evt.keycode, 41);
+    t.equal(evt.keyCode, 41);
   });
 
   t.plan(3);
-  dispatchKeys([39, 40, 41]);
+  [39, 40, 41].forEach(simkey);
 });
 
 test('can get multiple keys from the internal buffer', function(t) {
   t.plan(3);
-  dispatchKeys([50, 51, 52]);
+  [50, 51, 52].forEach(simkey);
 
-  keydown(function(err, evt) {
-    t.equal(evt.keycode, 50);
-  });
+  // wait 50ms as simkey waits till next tick also
+  setTimeout(function() {
+    keydown(function(err, evt) {
+      t.equal(evt.keyCode, 50);
+    });
 
-  keydown(function(err, evt) {
-    t.equal(evt.keycode, 51);
-  });
+    keydown(function(err, evt) {
+      t.equal(evt.keyCode, 51);
+    });
 
-  keydown(function(err, evt) {
-    t.equal(evt.keycode, 52);
-  });
+    keydown(function(err, evt) {
+      t.equal(evt.keyCode, 52);
+    });
+  }, 50);
 });
 
 test('can stop remove event listeners', function(t) {
   keydown(function(err, evt) {
-    t.equal(evt.keycode, 60);
+    t.equal(evt.keyCode, 60);
   });
 
   keydown(function(err, evt) {
-    t.equal(evt.keycode, 61);
+    t.equal(evt.keyCode, 61);
 
     // call key down indicating that we have ended the watch
     keydown(true);
@@ -85,7 +85,7 @@ test('can stop remove event listeners', function(t) {
   });
 
   t.plan(3);
-  dispatchKeys([60, 61, 62]);
+  [60, 61, 62].forEach(simkey);
 
   setTimeout(function() {
     t.pass('key did not fire');
