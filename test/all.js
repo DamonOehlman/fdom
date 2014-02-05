@@ -4,4 +4,3 @@ require('./meta');
 require('./on');
 require('./next');
 require('./classtweak');
-require('./throttle');
