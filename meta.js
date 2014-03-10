@@ -30,7 +30,10 @@ module.exports = function(regex) {
 };
 
 function coerce(value) {
-  value = parseFloat(value) || value;
+  var numericVal = parseFloat(value);
+  if (! isNaN(numericVal)) {
+    value = numericVal;
+  }
 
   if (reBool.test(value)) {
     value = value == 'true';

@@ -87,6 +87,24 @@ test('extract as integer value', function(t) {
   });
 });
 
+test('create intish metadata with a 0 value', function(t) {
+  var m = crel('meta', { name: 'zeroish', content: 0 });
+
+  document.head.appendChild(m);
+
+  t.plan(3);
+  t.ok(m instanceof HTMLMetaElement);
+  t.equal(m.getAttribute('name'), 'zeroish');
+  t.equal(m.parentNode, document.head);
+});
+
+test('extract as integer value', function(t) {
+  t.plan(1);
+  t.deepEqual(meta(/^zeroish/), {
+    zeroish: 0
+  });
+});
+
 test('create some floatish metadata', function(t) {
   var m = crel('meta', { name: 'floatish', content: 8.3 });
 
