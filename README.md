@@ -240,12 +240,9 @@ function animate() {
 raf(animate);
 ```
 
-### throttle(fn, delay)
+### remove(el)
 
-A cherry-pickable throttle function.  Used to throttle `fn` to ensure
-that it can be called at most once every `delay` milliseconds.  Will
-fire first event immediately, ensuring the next event fired will occur
-at least `delay` milliseconds after the first, and so on.
+Remove the specified target element from the DOM.
 
 ## License(s)
 
