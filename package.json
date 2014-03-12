@@ -34,16 +34,16 @@
     "files": "test/all.js",
     "browsers": [
       "ie/9..latest",
-      "firefox/23..latest",
+      "firefox/20..latest",
       "firefox/nightly",
-      "chrome/28..latest",
+      "chrome/25..latest",
       "chrome/canary",
-      "opera/16..latest",
+      "safari/latest",
+      "opera/15..latest",
       "opera/next",
-      "safari/5.1..latest",
-      "ipad/6.0..latest",
-      "iphone/6.0..latest",
-      "android-browser/4.2..latest"
+      "iphone/latest",
+      "ipad/latest",
+      "android/latest"
     ]
   }
 }
