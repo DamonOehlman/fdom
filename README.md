@@ -13,6 +13,7 @@ than by simply requiring `fdom` as a whole module.
 
 [![browser support](https://ci.testling.com/DamonOehlman/fdom.png)](https://ci.testling.com/DamonOehlman/fdom)
 
+[![Build Status](https://img.shields.io/travis/DamonOehlman/fdom.svg?branch=master)](https://travis-ci.org/DamonOehlman/fdom) 
 
 ## Modules
 
