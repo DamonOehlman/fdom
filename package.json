@@ -28,7 +28,8 @@
     "crel": "^2.1.5",
     "pull-stream": "^2.25.0",
     "simkey": "~0.2.0",
-    "tape": "^3.0.0"
+    "tape": "^3.0.0",
+    "testling": "^1.7.1"
   },
   "testling": {
     "files": "test/all.js",
