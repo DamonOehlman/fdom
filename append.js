@@ -28,9 +28,15 @@ var append = module.exports = function() {
 append.to = function(target, child) {
 
   function append(el) {
-    target.appendChild(el);
+    var t = target;
+    if (typeof t == 'string' || (t instanceof String)) {
+      t = document.querySelector(t);
+    }
 
-    return el;
+    if (t && typeof t.appendChild == 'function') {
+      t.appendChild(el);
+      return el;
+    }
   }
 
   return child ? append(child) : append;
