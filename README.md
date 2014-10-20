@@ -47,6 +47,19 @@ var list = append.to(document.body, crel('ul'));
 
 ```
 
+### attrib(name, value) => fn(el)
+
+Set an attribute value for an element.
+
+```js
+var attrib = require('fdom/attrib');
+var qsa = require('fdom/qsa');
+
+// change all elements with a data-name="Fred" to "Bob"
+qsa('*[data-name="Fred"]').forEach(attrib('data-name', 'Bob'));
+
+```
+
 ### classtweak(operations, => el)
 
 A functional helper for making
