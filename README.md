@@ -83,6 +83,22 @@ tweak('~test', document.body);
 qsa('section').forEach(tweak('+active'));
 ```
 
+### css
+
+```
+f(el) => fn(valueKeyPair)
+```
+
+The `css` function can be used to pass through keys and values that should be
+applied to a particular dom element.
+
+```js
+var css = require('fdom/css');
+
+[ ['margin', 0], ['backgroundColor', 'red'] ].forEach(css(document.body));
+
+```
+
 ### get-attributes
 
 ```
